@@ -1,0 +1,43 @@
+{
+  "save_path": "./examples/instance3/新的世界",
+
+  "ignores": [
+    "DIM-1/entity",
+    "DIM1/entity/This_should_not_copy.docx",
+    "voxy",
+    "data/DistantHorizons.sqlite",
+    "This_should_not_copy.docx"
+  ],
+
+  "partials": [
+    {
+      "folder": "DIM1/region",
+      "x1": -512,
+      "z1": -456,
+      "x2": 512,
+      "z2": 512
+    },
+    {
+      "folder": "DIM-1/region",
+      "x1": 4095,
+      "z1": 4095,
+      "x2": 4666,
+      "z2": 4777
+    },
+    "poi/this_should_copy.txt",
+    {
+      "folder": "region",
+      "x1": 1999,
+      "z1": 2001,
+      "x2": 3071,
+      "z2": 2999
+    },
+    {
+      "folder": "region",
+      "files": [
+        "r.0.0.mca", 
+        "r.-7.-7.mca"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "save_path": "D:/MultiMC/instances/1.20.1 voxx/.minecraft/saves/OutsideTime",
+  "ignores": [
+    "voxy",
+    "icon.png"
+  ],
+  "partials": [
+    {
+      "folder": "region",
+      "x1": -6900,
+      "z1": -1500,
+      "x2": -6700,
+      "z2": -1300
+    }
+  ]
+}

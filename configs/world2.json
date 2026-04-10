@@ -1,0 +1,39 @@
+{
+  "save_path": "./examples/instance2/who's gonna name the world like this",
+
+  "ignores": [
+    "DIM-1/entity",
+    "DIM1/entity/This_should_not_copy.docx",
+    "voxy",
+    "data/DistantHorizons.sqlite",
+    "This_should_not_copy.docx",
+    "another_random_mod_folder"
+  ],
+
+  "partials": [
+    "DIM1/region/r.15.15.mca",
+    "DIM1/region/r.-6.-8.mca",
+    {
+      "folder": "DIM-1/region",
+      "x1": -7679,
+      "z1": -7680,
+      "x2": -6655,
+      "z2": -6100
+    },
+    "poi/this_should_copy.txt",
+    {
+      "folder": "region",
+      "x1": 2047,
+      "z1": 2047,
+      "x2": 2560,
+      "z2": 2560
+    },
+    {
+      "folder": "region",
+      "x1": -3000,
+      "z1": -2561,
+      "x2": -3585,
+      "z2": -3585
+    }
+  ]
+}

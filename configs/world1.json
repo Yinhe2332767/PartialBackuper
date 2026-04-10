@@ -1,0 +1,36 @@
+{
+  "save_path": "./examples/instance1/world",
+
+  "ignores": [
+    "DIM-1/entity",
+    "DIM1/entity/This_should_not_copy.docx",
+    "voxy",
+    "data/DistantHorizons.sqlite",
+    "This_should_not_copy.docx"
+  ],
+
+  "partials": [
+    {
+      "folder": "DIM1/region",
+      "x1": -512,
+      "z1": -456,
+      "x2": 512,
+      "z2": 512
+    },
+    {
+      "folder": "DIM-1/region",
+      "x1": -560,
+      "z1": -512,
+      "x2": 12,
+      "z2": 403
+    },
+    "poi/this_should_copy.txt",
+    {
+      "folder": "region",
+      "x1": 0,
+      "z1": 5,
+      "x2": 12,
+      "z2": 35
+    }
+  ]
+}
