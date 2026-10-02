@@ -1,4 +1,9 @@
 {
     "language": "中文", 
-    "print_full_process": false 
+    "print_full_process": false, 
+    "config_paths": [
+        "can/also/do/relOrAbs/paths/to/someConfig.json",
+        "configs",
+        "D:/HMCL/sample_config.json"
+    ]
 }

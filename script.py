@@ -1,13 +1,15 @@
 import json
 import os
 import shutil
+import time
 import zipfile
 import tempfile
-from datetime import datetime
-# 作者：Yinhe233，主要代码由豆包生成
+# 作者：Yinhe233，主要代码由ai生成
 
 lang = 'EN'
 prt = True
+
+ticker = 0.0
 
 def printer(cn, en):
     if lang == 'CN':
@@ -106,6 +108,9 @@ def copy_list(file_list, src_root, dst_root):
         src = os.path.join(src_root, item)
         if not os.path.exists(src):
             continue
+        if os.path.isdir(src): 
+            smart_copy(src,dst_root,[])
+            continue
         dst = os.path.join(dst_root, item)
         os.makedirs(os.path.dirname(dst), exist_ok=True)
         shutil.copy2(src, dst)
@@ -167,13 +172,15 @@ def main(config_path):
             print("正在复制部分备份文件...", "Copying partials...")
         copy_list(partial_list, save_path, temp_dir)
 
-        tmark = datetime.now().strftime("%Y-%m-%d_%H%M%S")
+        tmark = time.strftime("%Y-%m-%d_%H%M%S")
         zip_name = f"{save_path}_{tmark}_partial.zip"
         if prt:
             printer(f"正在打包：{zip_name}",f"Zipping up: {zip_name}")
         zip_folder(temp_dir, zip_name)
 
     printer(f"已完成打包{zip_name}", f"Zipping {zip_name} done.")
+    tused = int(time.time() - ticker)
+    printer(f"本次耗时{tused}秒", f"{tused} seconds used this time")
 
 if __name__ == "__main__":
     glbcfg = load_config("global_config.json")
@@ -183,10 +190,25 @@ if __name__ == "__main__":
     else: 
         lang = 'EN'
     prt = glbcfg.get("print_full_process")
-    files = os.listdir('configs')
-    for file in files: 
-        if os.path.splitext(file)[1] != '.json' or file == 'config_template.json': 
+    configs = glbcfg.get('config_paths')
+    for cc in configs: 
+        ticker = time.time()
+        print(os.path.splitext(cc))
+        if cc == 'can/also/do/relOrAbs/paths/to/someConfig.json' or os.path.basename(cc) == 'config_template.json': 
             continue
-        printer(f'开始执行{file}配置指令',f'Start running with {file}')
-        main(os.path.join('configs',file).replace("\\", "/"))
+        if not os.path.exists(cc): 
+            printer(f'指定位置{cc}不存在。请检查拼写。',f'{cc} doesn\'t exist. Please check your spelling.')
+            continue
+        # Single file
+        if os.path.splitext(cc)[1] == '.json': 
+            printer(f'开始执行{cc}配置指令',f'Start running with {cc}')
+            main(cc.replace("\\", "/"))
+            continue
+        # Folder
+        files = os.listdir(cc)
+        for file in files: 
+            if os.path.splitext(file)[1] != '.json' or file == 'config_template.json': 
+                continue
+            printer(f'开始执行{file}配置指令',f'Start running with {file}')
+            main(os.path.join(cc,file).replace("\\", "/"))
     printer('备份完成！','Backup complete!')
